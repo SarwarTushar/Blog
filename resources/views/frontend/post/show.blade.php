@@ -12,7 +12,7 @@
                         <h1>{{$posts->title}}</h1>
                         <span class="meta">
                             Posted by
-                            <a href="#!">sarwar</a> <br>
+                            <a href="{{route('author_wise_post',$posts->user_id)}}">{{ $posts->user->name }}</a> <br>
                             {{dateFormate($posts->created_at)}}
                         </span>
                     </div>

@@ -37,7 +37,14 @@
               </p>
             </a>
         </li>
-
+        <li class="nav-item ">
+          <a href="{{route('mypost.index')}}" class="nav-link {{Request::is('mypost') ? 'active' : ''}}">
+            <i class="fas fa-book-open"></i>
+            <p>
+              My Posts
+            </p>
+          </a>
+      </li>
 
       </ul>
     </nav>
