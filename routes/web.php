@@ -19,6 +19,9 @@ Route::get('/contact', function () {
 //Author wise Post
 Route::get('/author/{id}', 'PostController@AuthorWisePost')->name('author_wise_post');
 
+//tag wise Post
+Route::get('/tag_wise_post/{id}', 'PostController@TagWisePost')->name('tag_wise_post');
+
 //mypost
 Route::resource('mypost', MyPostController::class)->name('mypost','id');
 

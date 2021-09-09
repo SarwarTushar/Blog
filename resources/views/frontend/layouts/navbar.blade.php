@@ -9,10 +9,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                    <li class="nav-item{{Request::is('/')?'-active':''}}"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('/')}}">Home</a></li>
-                    <li class="nav-item{{Request::is('/about')?'-active':''}}"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
-                    <li class="nav-item{{Request::is('/post/create')?'-active':''}}"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('post.create')}}">Create Post</a></li>
-                    <li class="nav-item{{Request::is('contact')?'-active':''}}"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('contact')}}">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('/')}}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('post.create')}}">Create Post</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('contact')}}">Contact</a></li>
                 </ul>
 
 

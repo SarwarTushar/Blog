@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','Sports Blog|'.$posts[0]->user->name)
+@section('title','Sports Blog|'.$tags->name)
 
 @section('content')
     <!-- Page Header-->
@@ -11,7 +11,7 @@
                     <div class="site-heading">
                         <h1>Sports Blog</h1>
                         <span class="subheading">A Blog For Sports Lover</span>
-                        <h1>Post By {{$posts[0]->user->name}}</h1>
+                        <h1>Post About {{$tags->name}}</h1>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <!-- Post preview-->
                 <div class="post-preview">
-                    @foreach ($posts as $post)
+                    @foreach ($tags->posts as $post)
                         <a href="{{route('post.show',$post->id)}}">
                             <h2 class="post-title">{{$post->title}}</h2>
                             <h3 class="post-subtitle">{{Str::limit(strip_tags($post->body), 150, '...')}}</h3>
@@ -34,7 +34,6 @@
                             {{dateFormate($post->created_at)}}
                         </p>
                     @endforeach
-                    {{$posts->links()}}
                 </div>
             </div>
         </div>

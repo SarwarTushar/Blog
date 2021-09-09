@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Page Header-->
-    <header class="masthead" style="background-image: url('frontend/assets/img/CR7-HD.jpg')">
+    <header class="masthead" style="background-image: url({{asset('frontend/assets/img/CR7-HD.jpg')}})">
         <div class="container position-relative px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
@@ -22,6 +22,11 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <!-- Post preview-->
                 <div class="post-preview">
+                    <span>Tags:
+                        @foreach ($tags as $tag )
+                            <a href="{{route('tag_wise_post',$tag->id)}}" class="btn btn-secondary" role="button">{{$tag->name }}</a>
+                        @endforeach
+                    </span>
                     @foreach ($posts as $post)
                         <a href="{{route('post.show',$post->id)}}">
                             <h2 class="post-title">{{$post->title}}</h2>

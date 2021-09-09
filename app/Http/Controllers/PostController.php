@@ -12,14 +12,15 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('index','show');
+        $this->middleware('auth')->except('index','show','AuthorWisePost','TagWisePost');
     }
 
     public function index()
     {
-        $posts = Post::orderBy('created_at','desc')->simplePaginate(5);
+        $posts = Post::orderBy('created_at','desc')->paginate(5);
+        $tags = Tag::all();
 
-        return view('frontend.post.index', compact('posts'));
+        return view('frontend.post.index', compact('posts','tags'));
     }
 
     public function create()
@@ -83,8 +84,15 @@ class PostController extends Controller
 
     public function AuthorWisePost($id)
     {
-        $posts = Post::where('user_id',$id)->paginate(5);
-        //dd($posts);
+        $posts = Post::where('user_id',$id)->paginate(4);
+
         return view('frontend.post.author_wise_post', compact('posts'));
+    }
+
+    public function TagWisePost($id)
+    {
+        $tags = Tag::findorFail($id);
+
+        return view('frontend.post.tag_wise_post', compact('tags','posts'));
     }
 }

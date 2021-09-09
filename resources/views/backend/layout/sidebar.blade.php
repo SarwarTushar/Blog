@@ -25,7 +25,7 @@
           <a href="{{route('post.create')}}" class="nav-link {{Request::is('post/create') ? 'active' : ''}}">
             <i class="fas fa-book-open"></i>
             <p>
-              Post
+              Post Create
             </p>
           </a>
         </li>
