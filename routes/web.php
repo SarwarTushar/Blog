@@ -31,3 +31,6 @@ Route::resource('mypost', MyPostController::class)->name('mypost','id');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::post('save-comment','CommentController@save_comment');
