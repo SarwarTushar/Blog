@@ -7,6 +7,7 @@ use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class PostController extends Controller
 {
@@ -20,7 +21,18 @@ class PostController extends Controller
         $posts = Post::orderBy('created_at','desc')->paginate(5);
         $tags = Tag::all();
 
-        return view('frontend.post.index', compact('posts','tags'));
+        $months_list = array();
+        for ($i = 11; $i >= 0; $i--) {
+            $month = Carbon::today()->startOfMonth()->subMonth($i)->format('F');;
+            $year = Carbon::today()->startOfMonth()->subMonth($i)->format('Y');
+            array_push($months_list, array(
+                'month' => $month,
+                'year' => $year
+            ));
+        }
+        $month_year_list = array_reverse($months_list);
+        //dd($month_year_list[0]['month']);
+        return view('frontend.post.index', compact('posts','tags','month_year_list'));
     }
 
     public function create()
@@ -91,6 +103,14 @@ class PostController extends Controller
 
     public function TagWisePost($id)
     {
+        $tags = Tag::findorFail($id);
+
+        return view('frontend.post.tag_wise_post', compact('tags','posts'));
+    }
+
+    public function PostRating($id)
+    {
+        dd($id);
         $tags = Tag::findorFail($id);
 
         return view('frontend.post.tag_wise_post', compact('tags','posts'));

@@ -16,10 +16,12 @@
             </div>
         </div>
     </header>
+    <div class="row g-5">
+        <div class="col-md-8">
     <!-- Main Content-->
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
+    <div class="container px-8 px-lg-8">
+        <div class="row gx-5 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-10">
                 <!-- Post preview-->
                 <div class="post-preview">
                     <span>Tags:
@@ -43,5 +45,28 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="col-md-4">
+  <div class="position-sticky" style="top: 2rem;">
+    <div class="p-4 mb-3 bg-light rounded">
+      <h4 class="fst-italic">About</h4>
+      <p class="mb-0">Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.</p>
+    </div>
+
+    <div class="p-4">
+      <h4 class="fst-italic">Archives</h4>
+      <ol class="list-unstyled mb-0">
+          @for($i = 0; $i < count($month_year_list); $i++)
+            {{-- @foreach ($month_year_list[$i] as  $list)
+                <li><a href="#">{{$list['month']}}</a></li>
+            @endforeach --}}
+            <li><a href="#">{{$month_year_list[$i]['month']}},{{$month_year_list[$i]['year']}}</a></li><br>
+          @endfor
+      </ol>
+    </div>
+  </div>
+</div>
+</div>
 @endsection
 

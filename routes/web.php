@@ -22,6 +22,9 @@ Route::get('/author/{id}', 'PostController@AuthorWisePost')->name('author_wise_p
 //tag wise Post
 Route::get('/tag_wise_post/{id}', 'PostController@TagWisePost')->name('tag_wise_post');
 
+//Post Rating
+Route::post('/post_rating/{id}', 'PostController@PostRating')->name('post_rating');
+
 //mypost
 Route::resource('mypost', MyPostController::class)->name('mypost','id');
 
