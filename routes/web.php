@@ -32,5 +32,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+//comment
 Route::post('save-comment','CommentController@save_comment');
+
+//month_wise_post
+Route::get('/month_wise_post/{id}', 'PostController@MonthWisePost')->name('month_wise_post');

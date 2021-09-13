@@ -10,29 +10,39 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('/')}}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('post.create')}}">Create Post</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('contact')}}">Contact</a></li>
+                    @if (Route::has('login'))
+                        @auth
+                        <div id="app">
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link px-lg-3 py-3 py-lg-4" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre >
+                                   <div style="background-color: white; padding:5px;border-radius: 25px;font-size:12px">{{ Auth::user()->name }}</div>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="font-size: 12px" >
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();" >
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        </div>
+                        @else
+                            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('login')}}">Login</a></li>
+                            @if (Route::has('register'))
+                                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('register')}}">Register</a></li>
+                            @endif
+                        @endauth
+                    @endif
                 </ul>
-
-
             </div>
-
         </div>
-
-            @if (Route::has('login'))
-                <div class="top-right links" >
-                    @auth
-                        <a href="{{ url('/home') }}" style="color:white">Home</a>
-                    @else
-                    <a href="{{ route('login') }}" style="color:white" >Login</a>
-
-                        @if (Route::has('register'))
-                        <a href="{{ route('register') }}" style="color:white;padding-right:4px" >Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
     </nav>
 

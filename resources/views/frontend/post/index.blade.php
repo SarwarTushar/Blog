@@ -58,10 +58,7 @@
       <h4 class="fst-italic">Archives</h4>
       <ol class="list-unstyled mb-0">
           @for($i = 0; $i < count($month_year_list); $i++)
-            {{-- @foreach ($month_year_list[$i] as  $list)
-                <li><a href="#">{{$list['month']}}</a></li>
-            @endforeach --}}
-            <li><a href="#">{{$month_year_list[$i]['month']}},{{$month_year_list[$i]['year']}}</a></li><br>
+            <li><a href="{{route('month_wise_post',$month_year_list[$i]['month'] )}}">{{$month_year_list[$i]['month']}},{{$month_year_list[$i]['year']}}</a></li><br>
           @endfor
       </ol>
     </div>

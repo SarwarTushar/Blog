@@ -79,21 +79,6 @@ class PostController extends Controller
         return view('frontend.post.show', compact('posts'));
     }
 
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
-    }
-
     public function AuthorWisePost($id)
     {
         $posts = Post::where('user_id',$id)->paginate(4);
@@ -114,5 +99,14 @@ class PostController extends Controller
         $tags = Tag::findorFail($id);
 
         return view('frontend.post.tag_wise_post', compact('tags','posts'));
+    }
+
+    public function MonthWisePost($month_name)
+    {
+
+        $posts = Post::whereMonth('created_at', date_parse($month_name)['month'])->paginate(5);
+        $month_name = $month_name;
+
+        return view('frontend.post.month_wise_post', compact('posts','month_name'));
     }
 }
