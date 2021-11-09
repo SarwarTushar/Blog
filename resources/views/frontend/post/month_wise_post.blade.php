@@ -23,17 +23,22 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <!-- Post preview-->
                 <div class="post-preview">
-                    @foreach ($posts as $post)
-                        <a href="{{route('post.show',$post->id)}}">
-                            <h2 class="post-title">{{$post->title}}</h2>
-                            <h3 class="post-subtitle">{{Str::limit(strip_tags($post->body), 150, '...')}}</h3>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="{{route('author_wise_post',$post->user_id)}}">{{ $post->user->name }}</a>
-                            {{dateFormate($post->created_at)}}
-                        </p>
-                    @endforeach
+                    @if (!empty($posts))
+                        @foreach ($posts as $post)
+                            <a href="{{route('post.show',$post->id)}}">
+                                <h2 class="post-title">{{$post->title}}</h2>
+                                <h3 class="post-subtitle">{{Str::limit(strip_tags($post->body), 150, '...')}}</h3>
+                            </a>
+                            <p class="post-meta">
+                                Posted by
+                                <a href="{{route('author_wise_post',$post->user_id)}}">{{ $post->user->name }}</a>
+                                {{dateFormate($post->created_at)}}
+                            </p>
+                        @endforeach
+                    @else
+                        <p>There is no post for</p>{{$month_name}}
+                    @endif
+
                     {{$posts->links()}}
                 </div>
             </div>

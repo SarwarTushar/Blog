@@ -13,7 +13,7 @@ Route::get('/post/{id}', 'PostController@show')->name('post.show');
 
 //contact
 Route::get('/contact', function () {
-    return view('frontend.index');
+    return view('frontend.post.contact');
 })->name('contact');
 
 //Author wise Post
