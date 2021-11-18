@@ -39,7 +39,7 @@
                     <p>{{strip_tags($posts->body)}}</p>
                     <span>Tags:
                         @foreach ($posts->tags as $tag )
-                            <a href="as" class="btn btn-secondary" role="button">{{$tag->name }}</a>
+                            <a href="{{route('tag_wise_post',$tag->id)}}" class="btn btn-secondary" role="button">{{$tag->name }}</a>
                         @endforeach
                             {{-- Post Comments --}}
                             @if (Auth::check())
